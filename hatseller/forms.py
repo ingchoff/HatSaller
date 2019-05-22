@@ -33,12 +33,23 @@ class MyLoginForm(forms.Form):
             raise forms.ValidationError('Wrong username or password!')
 
 class RegisterForm(forms.Form):
+    username = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Username'
+            }
+        )
+    )
+
     first_name = forms.CharField(
         max_length=100,
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'First Name'
+                'placeholder': 'First Name',
+                'name': 'first_name'
             }
         ),
         required=False
@@ -49,7 +60,8 @@ class RegisterForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Last Name'
+                'placeholder': 'Last Name',
+                'name': 'last_name'
             }
         ),
         required=False
@@ -91,11 +103,13 @@ class RegisterForm(forms.Form):
         data = self.cleaned_data['first_name']
         if len(data) == 0:
             raise forms.ValidationError("โปรดกรอกชื่อจริง")
+        return data
 
     def clean_last_name(self):
         data = self.cleaned_data['last_name']
         if len(data) == 0:
             raise forms.ValidationError("โปรดกรอกชื่อจริง")
+        return data
 
     def clean(self):
         cleaned_data = super().clean()

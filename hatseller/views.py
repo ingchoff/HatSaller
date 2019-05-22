@@ -51,11 +51,13 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
+            print(form.cleaned_data)
             password = form.cleaned_data.pop('password')
+            form.cleaned_data.pop('confirm_password')
             user = User(**form.cleaned_data)
             user.set_password(password)
             user.save()
-            return redirect('views.my_login', context=context)
+            return redirect('views.my_login')
     else:
         form = RegisterForm()
     #     next_url = request.GET.get('next')
