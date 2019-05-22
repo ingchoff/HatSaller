@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <title>Register</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="signup-form">
+      <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+          <p>
+            {{ form.non_field_errors }}
+          </p>
+        {% endif %}
+        <h2>Register</h2>
+        <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+        <div class="form-group">
+          <div class="row">
+            <div class="col">
+              {{ form.first_name }}
+              {{ form.first_name.errors }}
+            </div>
+            <div class="col">
+              {{ form.last_name }}
+              {{ form.last_name.errors }}  
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          {{ form.email }}
+          {{ form.email.errors }}  
+        </div>
+        <div class="form-group">
+          {{ form.password }}
+          {{ form.password.errors }}  
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"
+            required="required">
+        </div>
+        <div class="form-group">
+          <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of
+              Use</a> &amp; <a href="#">Privacy Policy</a></label>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+        </div>
+      </form>
+      <div class="text-center">Already have an account? <a href="{% url 'login' %}">Sign in</a></div>
+    </div>
+  </div>
+
+  <style>
+      .errorlist{
+          color:red;
+      }
+  </style>
+</body>
+
+</html>
