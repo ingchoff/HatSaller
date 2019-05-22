@@ -57,7 +57,7 @@ def register(request):
             user = User(**form.cleaned_data)
             user.set_password(password)
             user.save()
-            return redirect('views.my_login')
+            return redirect(my_login)
     else:
         form = RegisterForm()
     #     next_url = request.GET.get('next')
