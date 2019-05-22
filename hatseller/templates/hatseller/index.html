@@ -8,7 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>{{ page_title }}</h1>
+        <div class="row mt-4">
+            <h1>{{ page_title }}</h1>
+        </div>
+        {% if user.is_authenticated %}
+            <a class="btn btn-danger ml-3" href="{% url 'logout'%}">Logout!</a>
+        {% endif %}
+        {% for hat in hat_list %}
+            <ul>{{ hat.id }} {{ hat.title }}
+            </ul>
+        {% endfor %}
     </div>
 </body>
 </html>
