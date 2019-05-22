@@ -81,7 +81,7 @@ DATABASES = {
     }
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'mysite',
+    #     'NAME': 'hatseller',
     #     'USER': 'root',
     #     'PASSWORD': 'P@ssw0rd',
     #     'HOST': '127.0.0.1',
@@ -130,3 +130,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+LOGIN_URL = '/hatseller/login/'
