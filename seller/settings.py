@@ -75,18 +75,18 @@ WSGI_APPLICATION = 'seller.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'mysite',
-    #     'USER': 'root',
-    #     'PASSWORD': 'P@ssw0rd',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3306'
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hatseller',
+        'USER': 'root',
+        'PASSWORD': 'P@ssw0rd',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
+    }
 }
 
 
@@ -130,3 +130,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+LOGIN_URL = '/hatseller/login/'

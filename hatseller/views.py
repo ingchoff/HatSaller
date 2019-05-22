@@ -1,8 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from hatseller.forms import MyLoginForm
 
-
+@login_required
 def index(request):
     context = {
         'page_title': 'Hat Seller',
